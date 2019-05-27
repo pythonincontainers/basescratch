@@ -1,0 +1,12 @@
+FROM mypython3.7:dev-bionic as dev
+WORKDIR /app
+COPY . .
+RUN pip install cython==0.28.5
+RUN python compile.py build_ext --inplace
+
+FROM mypython3.7:prod-bionic as prod
+WORKDIR /app
+COPY factors_flask.py requirements.txt /app/
+COPY --from=dev /app/factors.cpython-37m-x86_64-linux-gnu.so /app
+RUN pip install -r requirements.txt
+CMD ["python","factors_flask.py"]

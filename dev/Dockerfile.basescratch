@@ -1,0 +1,4 @@
+FROM scratch
+ADD build/rootfs.tar.gz /
+ENV HOME=/root
+CMD ["/bin/bash"]
