@@ -11,7 +11,7 @@ apt-get install -y --no-install-recommends python3.7 curl
 # Add 'python' name to 'python3.7' binary
 ln /usr/bin/python3.7 /usr/bin/python
 # Pull PIP installation script
-curl "https://bootstrap.pypa.io/get-pip.py" -o "/tmp/get-pip.py"
+curl -k "https://bootstrap.pypa.io/get-pip.py" -o "/tmp/get-pip.py"
 # Install PIP
 python /tmp/get-pip.py
 rm /tmp/get-pip.py
