@@ -1,10 +1,10 @@
-FROM mypython3.7:dev-bionic as dev
+FROM mypython3.7:dev-xenial as dev
 WORKDIR /app
 COPY . .
 RUN pip install cython==0.28.5
 RUN python compile.py build_ext --inplace
 
-FROM mypython3.7:prod-bionic as prod
+FROM mypython3.7:prod-xenial as prod
 WORKDIR /app
 COPY factors_flask.py requirements.txt /app/
 COPY --from=dev /app/factors.cpython-37m-x86_64-linux-gnu.so /app
